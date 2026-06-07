@@ -1,0 +1,283 @@
+{
+  "token": "ETH",
+  "cmc_intelligence": {
+    "symbol": "ETH",
+    "quote": {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "price": 1632.2751358860555,
+      "percent_change_1h": 0.47353246,
+      "percent_change_24h": 5.09339018,
+      "percent_change_7d": -18.53143006,
+      "percent_change_30d": -29.54975924,
+      "volume_24h": 13813313677.21482,
+      "volume_change_24h": -30.8643,
+      "market_cap": 196990337350.704,
+      "market_cap_dominance": 9.2374,
+      "cmc_rank": 2,
+      "circulating_supply": 120684517.59131333,
+      "max_supply": null
+    },
+    "fundamentals": {
+      "category": "coin",
+      "tags": [
+        "pos",
+        "smart-contracts",
+        "ethereum-ecosystem",
+        "coinbase-ventures-portfolio",
+        "three-arrows-capital-portfolio",
+        "polychain-capital-portfolio",
+        "binance-labs-portfolio",
+        "blockchain-capital-portfolio",
+        "boostvc-portfolio",
+        "cms-holdings-portfolio",
+        "dcg-portfolio",
+        "dragonfly-capital-portfolio"
+      ],
+      "description": "Ethereum (ETH) is a cryptocurrency . Ethereum has a current supply of 120,684,517.59131333. The last known price of Ethereum is 1,633.12820299 USD and is up 4.85 over the last 24 hours. It is currently trading on 12062 active market(s) with $13,798,848,390.94 traded over the last 24 hours. More information can be found at https://www.ethereum.org/.",
+      "date_added": "2015-08-07T00:00:00.000Z",
+      "website": "https://www.ethereum.org/"
+    },
+    "global": {
+      "btc_dominance": 58.046657978974,
+      "eth_dominance": 9.230046506698,
+      "total_market_cap": 2132661107209.8108,
+      "total_market_cap_change_24h": 2.19927378,
+      "total_volume_24h": 75211210322.31
+    },
+    "fear_greed": {
+      "value": 14,
+      "classification": "Extreme fear"
+    }
+  },
+  "market_brief": {
+    "agent": "Market Scout",
+    "token": "ETH",
+    "regime": "trending",
+    "snapshot": {
+      "rsi_14": 40.7,
+      "atr_pct": 2.72,
+      "ema_50": 1765.6015,
+      "ema_200": 2017.7358,
+      "trend": "strong_downtrend",
+      "price": 1632.61
+    },
+    "sentiment": {
+      "fear_greed": 14,
+      "fear_greed_label": "Extreme fear",
+      "change_24h": 5.09339018,
+      "change_7d": -18.53143006,
+      "change_30d": -29.54975924
+    },
+    "market": {
+      "btc_dominance": 58.046657978974,
+      "total_cap_change_24h": 2.19927378,
+      "cmc_rank": 2
+    },
+    "recommended_biases": [
+      "trend_following",
+      "supertrend",
+      "macd_momentum",
+      "heikin_ashi",
+      "volume_momentum",
+      "short_only"
+    ],
+    "narrative": "ETH is in a trending regime (RSI 40.7, ATR 2.72%, trend strong_downtrend). Market sentiment: Extreme fear (14/100). 7-day move -18.5%."
+  },
+  "candidates_evaluated": 5,
+  "decision": {
+    "agent": "Arbitrator",
+    "verdict": "MIXED",
+    "summary": "Top pick: MACD Momentum ETH 4h \u2014 18.89%/mo, Sharpe 2.09, panel split vote.",
+    "winner": {
+      "strategy": {
+        "strategy_name": "MACD Momentum ETH 4h",
+        "token": "ETH",
+        "timeframe": "4h",
+        "directional_bias": "macd_momentum",
+        "stop_loss_pct": 2.0,
+        "take_profit_pct": 6.0,
+        "entry_rules": [
+          "MACD crosses above signal with RSI 35-68 (long)",
+          "MACD crosses below signal with RSI 32-65 (short)"
+        ],
+        "exit_rules": [
+          "Take profit at +6.0% or stop loss at -2.0%",
+          "Exit on opposite signal from the same generator"
+        ],
+        "rationale": "MACD/signal crossovers gated by RSI to avoid extremes. Regime: trending, ATR 2.7%.",
+        "created_at": "2026-06-07T22:08:47.893923+00:00"
+      },
+      "backtest": {
+        "strategy_name": "MACD Momentum ETH 4h",
+        "token": "ETH",
+        "timeframe": "4h",
+        "candles_used": 4380,
+        "starting_capital": 1000.0,
+        "final_balance": 2773.81,
+        "total_trades": 211,
+        "win_rate": 33.2,
+        "avg_monthly_return": 18.89,
+        "max_drawdown": 23.46,
+        "sharpe": 2.09,
+        "profit_factor": 1.36,
+        "best_month": 61.26,
+        "worst_month": -12.69,
+        "max_consecutive_losing_months": 1,
+        "total_return_pct": 177.38,
+        "walk_forward": {
+          "in_sample_return": 21.08,
+          "out_sample_return": 4.98,
+          "consistency_score": 0.24,
+          "verdict": "degraded",
+          "is_trades": 157,
+          "oos_trades": 51
+        },
+        "last_90d": {
+          "avg_monthly_return": 19.29,
+          "win_rate": 36.0,
+          "total_return_pct": 19.29,
+          "total_trades": 25,
+          "max_drawdown": 22.48
+        }
+      },
+      "assessment": {
+        "agent": "Risk Assessor",
+        "recommended_leverage": 3,
+        "max_drawdown": 23.46,
+        "sharpe": 2.09,
+        "risk_note": "Strong risk-adjusted returns."
+      },
+      "audit": {
+        "agent": "Risk Auditor",
+        "verdict": "APPROVED",
+        "reason": "Meets all minimum criteria"
+      },
+      "devil": {
+        "agent": "Devil's Advocate",
+        "risk_flag": "MEDIUM",
+        "concerns": [
+          "Low walk-forward consistency (0.24)."
+        ]
+      },
+      "vote": {
+        "agent": "Voting Panel",
+        "votes": [
+          {
+            "voter": "Market Scout",
+            "role": "market regime & timing",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Strategy Architect A",
+            "role": "trend-following design",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Strategy Architect B",
+            "role": "breakout & momentum design",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Strategy Architect C",
+            "role": "mean-reversion design",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Risk Assessor",
+            "role": "leverage & exposure",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Backtester",
+            "role": "statistical validation",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Risk Auditor",
+            "role": "minimum criteria compliance",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          },
+          {
+            "voter": "Devil's Advocate",
+            "role": "downside & failure modes",
+            "vote": "NEEDS_WORK",
+            "confidence": 6,
+            "justification": "Marginal edge \u2014 monitor and refine before sizing up."
+          }
+        ],
+        "tally": {
+          "DEPLOY": 0,
+          "SKIP": 0,
+          "NEEDS_WORK": 8
+        },
+        "consensus": "MIXED",
+        "label": "Split vote",
+        "avg_confidence": 6.0
+      },
+      "arbitrator_score": 20.132
+    },
+    "approved_count": 1,
+    "ranking": [
+      {
+        "strategy_name": "MACD Momentum ETH 4h",
+        "bias": "macd_momentum",
+        "score": 20.132,
+        "avg_monthly_return": 18.89,
+        "sharpe": 2.09,
+        "audit": "APPROVED",
+        "consensus": "MIXED"
+      },
+      {
+        "strategy_name": "Volume Momentum ETH 4h",
+        "bias": "volume_momentum",
+        "score": -997.47,
+        "avg_monthly_return": 19.32,
+        "sharpe": 2.53,
+        "audit": "REJECTED",
+        "consensus": "SKIP"
+      },
+      {
+        "strategy_name": "Bear Momentum ETH 4h",
+        "bias": "short_only",
+        "score": -1000.03,
+        "avg_monthly_return": 0.19,
+        "sharpe": -0.03,
+        "audit": "REJECTED",
+        "consensus": "SKIP"
+      },
+      {
+        "strategy_name": "Heikin Ashi Trend ETH 4h",
+        "bias": "heikin_ashi",
+        "score": -1000.06,
+        "avg_monthly_return": -0.28,
+        "sharpe": -0.06,
+        "audit": "REJECTED",
+        "consensus": "SKIP"
+      },
+      {
+        "strategy_name": "EMA Trend ETH 4h",
+        "bias": "trend_following",
+        "score": -1001.26,
+        "avg_monthly_return": -3.77,
+        "sharpe": -1.26,
+        "audit": "REJECTED",
+        "consensus": "SKIP"
+      }
+    ]
+  }
+}

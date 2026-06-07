@@ -1,0 +1,11 @@
+{
+  "cmc_api_key": "YOUR_COINMARKETCAP_API_KEY_HERE",
+  "ohlcv_provider": "binance",
+  "backtest": {
+    "days": 730,
+    "starting_capital": 1000.0,
+    "fee_rate": 0.0005,
+    "slippage": 0.0005,
+    "risk_per_trade": 0.02
+  }
+}

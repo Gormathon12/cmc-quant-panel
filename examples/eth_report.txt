@@ -1,0 +1,33 @@
+======================================================================
+  CMC QUANT PANEL — second opinion for ETH
+======================================================================
+
+Regime: trending   |   ETH is in a trending regime (RSI 40.7, ATR 2.72%, trend strong_downtrend). Market sentiment: Extreme fear (14/100). 7-day move -18.5%.
+Technicals: price 1632.61  RSI 40.7  ATR 2.72%  trend strong_downtrend
+Sentiment:  Fear&Greed 14/100 (Extreme fear)  7d -18.53143006%  30d -29.54975924%
+
+Candidates evaluated: 5  (audit-approved: 1)
+
+RANKING
+  strategy                    score  avg/mo%  sharpe      audit   panel
+  MACD Momentum ETH 4h       20.132    18.89    2.09   APPROVED   MIXED
+  Volume Momentum ETH 4h    -997.47    19.32    2.53   REJECTED    SKIP
+  Bear Momentum ETH 4h      -1000.03     0.19   -0.03   REJECTED    SKIP
+  Heikin Ashi Trend ETH 4h  -1000.06    -0.28   -0.06   REJECTED    SKIP
+  EMA Trend ETH 4h          -1001.26    -3.77   -1.26   REJECTED    SKIP
+
+----------------------------------------------------------------------
+  WINNER: MACD Momentum ETH 4h
+----------------------------------------------------------------------
+  Bias: macd_momentum   SL/TP: -2.0% / +6.0%   TF: 4h
+  Backtest (4380 candles): 18.89%/mo, WR 33.2%, maxDD 23.46%, Sharpe 2.09, PF 1.36, 211 trades
+  Walk-forward: degraded (IS 21.08%/mo, OOS 4.98%/mo)
+  Last 90d: 19.29%/mo, WR 36.0%, 25 trades
+  Entry: MACD crosses above signal with RSI 35-68 (long); MACD crosses below signal with RSI 32-65 (short)
+  Devil's Advocate: MEDIUM — Low walk-forward consistency (0.24).
+
+  Panel: Split vote (DEPLOY 0 / NEEDS_WORK 8 / SKIP 0), avg confidence 6.0/10
+
+=> Top pick: MACD Momentum ETH 4h — 18.89%/mo, Sharpe 2.09, panel split vote.
+
+Full result written to examples/eth_report.json

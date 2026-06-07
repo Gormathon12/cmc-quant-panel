@@ -1,0 +1,18 @@
+# Secrets / local config
+config.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Data cache
+data_cache/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
