@@ -251,36 +251,49 @@ def stoch_rsi(closes, highs, lows):
     return signals
 
 
-def supertrend(closes, highs, lows):
-    """SuperTrend ATR(14,3) direction flips."""
-    if len(closes) < 20:
-        return [0] * len(closes)
-    atr_period, mult = 14, 3.0
-    tr = [highs[0] - lows[0]]
-    for i in range(1, len(closes)):
-        tr.append(max(highs[i] - lows[i],
-                      abs(highs[i] - closes[i - 1]),
-                      abs(lows[i] - closes[i - 1])))
-    atr = [sum(tr[:atr_period]) / atr_period]
-    for i in range(atr_period, len(tr)):
-        atr.append((atr[-1] * (atr_period - 1) + tr[i]) / atr_period)
+def supertrend(closes, highs, lows, atr_period: int = 14, mult: float = 3.0):
+    """
+    SuperTrend(14, 3). Signals fire when the trend direction flips. Uses proper
+    trailing final upper/lower bands so direction actually changes over time.
+    """
+    n = len(closes)
+    if n <= atr_period:
+        return [0] * n
 
-    signals = [0] * len(closes)
-    dirs = []
-    for i in range(len(atr)):
-        ci = i + atr_period - 1
-        if ci >= len(closes):
-            break
-        hl2 = (highs[ci] + lows[ci]) / 2
-        lower = hl2 - mult * atr[i]
-        dirs.append((ci, +1 if closes[ci] > lower else -1))
-    for i in range(1, len(dirs)):
-        ci, d_now = dirs[i]
-        _, d_prev = dirs[i - 1]
-        if d_now == +1 and d_prev == -1:
-            signals[ci] = 1
-        elif d_now == -1 and d_prev == +1:
-            signals[ci] = -1
+    atr = ind.atr(highs, lows, closes, atr_period)
+    hl2 = [(highs[i] + lows[i]) / 2 for i in range(n)]
+
+    final_ub = [None] * n
+    final_lb = [None] * n
+    direction = [0] * n  # +1 uptrend, -1 downtrend
+    signals = [0] * n
+
+    start = next((i for i, v in enumerate(atr) if v is not None), None)
+    if start is None:
+        return signals
+
+    final_ub[start] = hl2[start] + mult * atr[start]
+    final_lb[start] = hl2[start] - mult * atr[start]
+    direction[start] = 1
+
+    for i in range(start + 1, n):
+        basic_ub = hl2[i] + mult * atr[i]
+        basic_lb = hl2[i] - mult * atr[i]
+
+        final_ub[i] = (basic_ub if (basic_ub < final_ub[i - 1] or closes[i - 1] > final_ub[i - 1])
+                       else final_ub[i - 1])
+        final_lb[i] = (basic_lb if (basic_lb > final_lb[i - 1] or closes[i - 1] < final_lb[i - 1])
+                       else final_lb[i - 1])
+
+        if direction[i - 1] == 1:
+            direction[i] = -1 if closes[i] < final_lb[i] else 1
+        else:
+            direction[i] = 1 if closes[i] > final_ub[i] else -1
+
+        if direction[i] == 1 and direction[i - 1] == -1:
+            signals[i] = 1
+        elif direction[i] == -1 and direction[i - 1] == 1:
+            signals[i] = -1
     return signals
 
 

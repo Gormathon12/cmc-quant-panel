@@ -2,9 +2,9 @@
   CMC QUANT PANEL — second opinion for ETH
 ======================================================================
 
-Regime: trending   |   ETH is in a trending regime (RSI 40.7, ATR 2.72%, trend strong_downtrend). Market sentiment: Extreme fear (14/100). 7-day move -18.5%.
+Regime: trending   |   ETH is in a trending regime (RSI 40.7, ATR 2.72%, trend strong_downtrend). Market sentiment: Extreme fear (15/100). 7-day move -16.6%.
 Technicals: price 1632.61  RSI 40.7  ATR 2.72%  trend strong_downtrend
-Sentiment:  Fear&Greed 14/100 (Extreme fear)  7d -18.53143006%  30d -29.54975924%
+Sentiment:  Fear&Greed 15/100 (Extreme fear)  7d -16.61188093%  30d -27.58043323%
 
 Candidates evaluated: 5  (audit-approved: 1)
 

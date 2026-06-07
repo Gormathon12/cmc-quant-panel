@@ -1,42 +1,42 @@
 {
-  "token": "ETH",
+  "token": "BTC",
   "cmc_intelligence": {
-    "symbol": "ETH",
+    "symbol": "BTC",
     "quote": {
-      "symbol": "ETH",
-      "name": "Ethereum",
-      "price": 1675.4940551186473,
-      "percent_change_1h": 2.85344732,
-      "percent_change_24h": 7.99654165,
-      "percent_change_7d": -16.61188093,
-      "percent_change_30d": -27.58043323,
-      "volume_24h": 14888826712.77982,
-      "volume_change_24h": -23.909,
-      "market_cap": 202206191769.1073,
-      "market_cap_dominance": 9.293,
-      "cmc_rank": 2,
-      "circulating_supply": 120684517.59131333,
-      "max_supply": null
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "price": 63048.67898055256,
+      "percent_change_1h": 2.00473025,
+      "percent_change_24h": 4.32826915,
+      "percent_change_7d": -14.57276951,
+      "percent_change_30d": -21.51649707,
+      "volume_24h": 34138730385.14599,
+      "volume_change_24h": 0.4605,
+      "market_cap": 1263437963326.364,
+      "market_cap_dominance": 58.287,
+      "cmc_rank": 1,
+      "circulating_supply": 20039087,
+      "max_supply": 21000000
     },
     "fundamentals": {
       "category": "coin",
       "tags": [
-        "pos",
-        "smart-contracts",
-        "ethereum-ecosystem",
+        "mineable",
+        "pow",
+        "sha-256",
+        "store-of-value",
+        "state-channel",
         "coinbase-ventures-portfolio",
         "three-arrows-capital-portfolio",
         "polychain-capital-portfolio",
         "binance-labs-portfolio",
         "blockchain-capital-portfolio",
         "boostvc-portfolio",
-        "cms-holdings-portfolio",
-        "dcg-portfolio",
-        "dragonfly-capital-portfolio"
+        "cms-holdings-portfolio"
       ],
-      "description": "Ethereum (ETH) is a cryptocurrency . Ethereum has a current supply of 120,684,517.59131333. The last known price of Ethereum is 1,687.97304524 USD and is up 8.18 over the last 24 hours. It is currently trading on 12062 active market(s) with $14,673,268,807.88 traded over the last 24 hours. More information can be found at https://www.ethereum.org/.",
-      "date_added": "2015-08-07T00:00:00.000Z",
-      "website": "https://www.ethereum.org/"
+      "description": "Bitcoin (BTC) is a cryptocurrency launched in 2010. Users are able to generate BTC through the process of mining. Bitcoin has a current supply of 20,039,087. The last known price of Bitcoin is 63,234.8150599 USD and is up 4.16 over the last 24 hours. It is currently trading on 12650 active market(s) with $32,808,903,076.61 traded over the last 24 hours. More information can be found at https://bitcoin.org/.",
+      "date_added": "2010-07-13T00:00:00.000Z",
+      "website": "https://bitcoin.org/"
     },
     "global": {
       "btc_dominance": 58.212437684428,
@@ -52,27 +52,27 @@
   },
   "market_brief": {
     "agent": "Market Scout",
-    "token": "ETH",
+    "token": "BTC",
     "regime": "trending",
     "snapshot": {
-      "rsi_14": 40.7,
-      "atr_pct": 2.72,
-      "ema_50": 1765.6015,
-      "ema_200": 2017.7358,
+      "rsi_14": 41.3,
+      "atr_pct": 1.98,
+      "ema_50": 65549.8156,
+      "ema_200": 72418.6581,
       "trend": "strong_downtrend",
-      "price": 1632.61
+      "price": 61822.39
     },
     "sentiment": {
       "fear_greed": 15,
       "fear_greed_label": "Extreme fear",
-      "change_24h": 7.99654165,
-      "change_7d": -16.61188093,
-      "change_30d": -27.58043323
+      "change_24h": 4.32826915,
+      "change_7d": -14.57276951,
+      "change_30d": -21.51649707
     },
     "market": {
       "btc_dominance": 58.212437684428,
       "total_cap_change_24h": 4.21454828,
-      "cmc_rank": 2
+      "cmc_rank": 1
     },
     "recommended_biases": [
       "trend_following",
@@ -82,71 +82,71 @@
       "volume_momentum",
       "short_only"
     ],
-    "narrative": "ETH is in a trending regime (RSI 40.7, ATR 2.72%, trend strong_downtrend). Market sentiment: Extreme fear (15/100). 7-day move -16.6%."
+    "narrative": "BTC is in a trending regime (RSI 41.3, ATR 1.98%, trend strong_downtrend). Market sentiment: Extreme fear (15/100). 7-day move -14.6%."
   },
   "candidates_evaluated": 5,
   "decision": {
     "agent": "Arbitrator",
     "verdict": "MIXED",
-    "summary": "Top pick: MACD Momentum ETH 4h \u2014 18.89%/mo, Sharpe 2.09, panel split vote.",
+    "summary": "Top pick: Volume Momentum BTC 4h \u2014 8.04%/mo, Sharpe 1.37, panel split vote.",
     "winner": {
       "strategy": {
-        "strategy_name": "MACD Momentum ETH 4h",
-        "token": "ETH",
+        "strategy_name": "Volume Momentum BTC 4h",
+        "token": "BTC",
         "timeframe": "4h",
-        "directional_bias": "macd_momentum",
+        "directional_bias": "volume_momentum",
         "stop_loss_pct": 2.0,
         "take_profit_pct": 6.0,
         "entry_rules": [
-          "MACD crosses above signal with RSI 35-68 (long)",
-          "MACD crosses below signal with RSI 32-65 (short)"
+          "Volume > 1.5x its 20-period average on a directional candle",
+          "Price closes above EMA 50 (long) or below (short)"
         ],
         "exit_rules": [
           "Take profit at +6.0% or stop loss at -2.0%",
           "Exit on opposite signal from the same generator"
         ],
-        "rationale": "MACD/signal crossovers gated by RSI to avoid extremes. Regime: trending, ATR 2.7%.",
-        "created_at": "2026-06-07T22:29:52.904139+00:00"
+        "rationale": "Volume spikes confirm participation; EMA 50 sets direction. Regime: trending, ATR 2.0%.",
+        "created_at": "2026-06-07T22:29:50.247275+00:00"
       },
       "backtest": {
-        "strategy_name": "MACD Momentum ETH 4h",
-        "token": "ETH",
+        "strategy_name": "Volume Momentum BTC 4h",
+        "token": "BTC",
         "timeframe": "4h",
         "candles_used": 4380,
         "starting_capital": 1000.0,
-        "final_balance": 2773.81,
-        "total_trades": 211,
-        "win_rate": 33.2,
-        "avg_monthly_return": 18.89,
-        "max_drawdown": 23.46,
-        "sharpe": 2.09,
-        "profit_factor": 1.36,
-        "best_month": 61.26,
-        "worst_month": -12.69,
-        "max_consecutive_losing_months": 1,
-        "total_return_pct": 177.38,
+        "final_balance": 1566.99,
+        "total_trades": 212,
+        "win_rate": 29.7,
+        "avg_monthly_return": 8.04,
+        "max_drawdown": 36.07,
+        "sharpe": 1.37,
+        "profit_factor": 1.17,
+        "best_month": 43.79,
+        "worst_month": -14.16,
+        "max_consecutive_losing_months": 2,
+        "total_return_pct": 56.7,
         "walk_forward": {
-          "in_sample_return": 21.08,
-          "out_sample_return": 4.98,
-          "consistency_score": 0.24,
-          "verdict": "degraded",
-          "is_trades": 157,
-          "oos_trades": 51
+          "in_sample_return": 1.44,
+          "out_sample_return": 24.65,
+          "consistency_score": 2.0,
+          "verdict": "consistent",
+          "is_trades": 161,
+          "oos_trades": 46
         },
         "last_90d": {
-          "avg_monthly_return": 19.29,
-          "win_rate": 36.0,
-          "total_return_pct": 19.29,
-          "total_trades": 25,
-          "max_drawdown": 22.48
+          "avg_monthly_return": 35.48,
+          "win_rate": 47.4,
+          "total_return_pct": 35.48,
+          "total_trades": 19,
+          "max_drawdown": 8.14
         }
       },
       "assessment": {
         "agent": "Risk Assessor",
-        "recommended_leverage": 3,
-        "max_drawdown": 23.46,
-        "sharpe": 2.09,
-        "risk_note": "Strong risk-adjusted returns."
+        "recommended_leverage": 2,
+        "max_drawdown": 36.07,
+        "sharpe": 1.37,
+        "risk_note": "High drawdown \u2014 only with strict position sizing."
       },
       "audit": {
         "agent": "Risk Auditor",
@@ -157,7 +157,7 @@
         "agent": "Devil's Advocate",
         "risk_flag": "MEDIUM",
         "concerns": [
-          "Low walk-forward consistency (0.24)."
+          "Deep 36.07% drawdown could wipe undercapitalized accounts."
         ]
       },
       "vote": {
@@ -229,52 +229,52 @@
         "label": "Split vote",
         "avg_confidence": 6.0
       },
-      "arbitrator_score": 20.132
+      "arbitrator_score": 23.404
     },
-    "approved_count": 1,
+    "approved_count": 2,
     "ranking": [
       {
-        "strategy_name": "MACD Momentum ETH 4h",
-        "bias": "macd_momentum",
-        "score": 20.132,
-        "avg_monthly_return": 18.89,
-        "sharpe": 2.09,
+        "strategy_name": "Volume Momentum BTC 4h",
+        "bias": "volume_momentum",
+        "score": 23.404,
+        "avg_monthly_return": 8.04,
+        "sharpe": 1.37,
         "audit": "APPROVED",
         "consensus": "MIXED"
       },
       {
-        "strategy_name": "Volume Momentum ETH 4h",
-        "bias": "volume_momentum",
-        "score": -997.47,
-        "avg_monthly_return": 19.32,
-        "sharpe": 2.53,
-        "audit": "REJECTED",
-        "consensus": "SKIP"
-      },
-      {
-        "strategy_name": "Bear Momentum ETH 4h",
-        "bias": "short_only",
-        "score": -1000.03,
-        "avg_monthly_return": 0.19,
-        "sharpe": -0.03,
-        "audit": "REJECTED",
-        "consensus": "SKIP"
-      },
-      {
-        "strategy_name": "Heikin Ashi Trend ETH 4h",
-        "bias": "heikin_ashi",
-        "score": -1000.06,
-        "avg_monthly_return": -0.28,
-        "sharpe": -0.06,
-        "audit": "REJECTED",
-        "consensus": "SKIP"
-      },
-      {
-        "strategy_name": "EMA Trend ETH 4h",
+        "strategy_name": "EMA Trend BTC 4h",
         "bias": "trend_following",
-        "score": -1001.26,
-        "avg_monthly_return": -3.77,
-        "sharpe": -1.26,
+        "score": 9.656,
+        "avg_monthly_return": 1.42,
+        "sharpe": 0.3,
+        "audit": "APPROVED",
+        "consensus": "SKIP"
+      },
+      {
+        "strategy_name": "Heikin Ashi Trend BTC 4h",
+        "bias": "heikin_ashi",
+        "score": -998.4,
+        "avg_monthly_return": 11.23,
+        "sharpe": 1.6,
+        "audit": "REJECTED",
+        "consensus": "SKIP"
+      },
+      {
+        "strategy_name": "MACD Momentum BTC 4h",
+        "bias": "macd_momentum",
+        "score": -999.04,
+        "avg_monthly_return": 6.88,
+        "sharpe": 0.96,
+        "audit": "REJECTED",
+        "consensus": "SKIP"
+      },
+      {
+        "strategy_name": "Bear Momentum BTC 4h",
+        "bias": "short_only",
+        "score": -1002.54,
+        "avg_monthly_return": -6.9,
+        "sharpe": -2.54,
         "audit": "REJECTED",
         "consensus": "SKIP"
       }

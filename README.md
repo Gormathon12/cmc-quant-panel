@@ -85,7 +85,53 @@ https://coinmarketcap.com/api/
 
 ```bash
 python -m src.skill --token BTC
+python -m src.skill --token ETH --timeframe 4h --json examples/eth_report.json
 ```
+
+## Example output
+
+Running the Skill on BTC produces a backtested strategy spec, a ranking, and a
+transparent panel verdict (full file: [examples/btc_report.txt](examples/btc_report.txt)):
+
+```
+  CMC QUANT PANEL — second opinion for BTC
+======================================================================
+Regime: trending   |   BTC ... RSI 41.3, ATR 1.98%, trend strong_downtrend.
+Sentiment: Fear&Greed 15/100 (Extreme fear)  7d -14.6%  30d -21.5%
+
+Candidates evaluated: 5  (audit-approved: 2)
+
+RANKING
+  strategy                    score  avg/mo%  sharpe      audit   panel
+  Volume Momentum BTC 4h     23.404     8.04    1.37   APPROVED   MIXED
+  EMA Trend BTC 4h            9.656     1.42     0.3   APPROVED    SKIP
+  Heikin Ashi Trend BTC 4h   -998.4    11.23     1.6   REJECTED    SKIP   <- 11%/mo but REJECTED
+  MACD Momentum BTC 4h      -999.04     6.88    0.96   REJECTED    SKIP
+  Bear Momentum BTC 4h      -1002.5     -6.9   -2.54   REJECTED    SKIP
+
+  WINNER: Volume Momentum BTC 4h
+  Backtest (4380 candles): 8.04%/mo, WR 29.7%, maxDD 36.07%, Sharpe 1.37, 212 trades
+  Walk-forward: consistent (IS 1.44%/mo, OOS 24.65%/mo)
+  Last 90d: 35.48%/mo, WR 47.4%, 19 trades
+  Panel: split vote (DEPLOY 0 / NEEDS_WORK 8 / SKIP 0)
+```
+
+**The headline isn't the winner — it's the rejections.** On ETH, a Volume Momentum
+strategy shows Sharpe **2.53** and **+19%/mo**, yet the panel *rejects* it: walk-forward
+collapses from +26.8%/mo in-sample to **−2.4%/mo** out-of-sample, and it has lost
+**−17.5%/mo over the last 90 days**. A naive "is this bullish?" agent would have
+recommended it. This one throws it out. That discipline is the whole point.
+
+## Tests
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
+```
+
+The suite (`tests/test_engine.py`) covers indicator alignment, the signal value
+domain, the **no-look-ahead** entry contract, backtest determinism, and stat
+sanity — all on synthetic data, no network needed.
 
 ## Status
 
@@ -96,9 +142,10 @@ python -m src.skill --token BTC
 - [x] Multi-agent panel (scout, architects, risk, devil's advocate, voting, arbitrator)
 - [x] Skill entry point + report formatting (`python -m src.skill --token BTC`)
 - [x] Sample outputs (examples/)
-- [ ] Unit tests for the engine
-- [ ] Package as a CMC Skill (skills-marketplace format) + demo video
-- [ ] Polish: fix `supertrend` band switch (currently 0 trades)
+- [x] Unit tests for the engine (17 tests, incl. no-look-ahead contract)
+- [x] `supertrend` generator fixed (proper trailing-band flips)
+- [ ] Package as a CMC Skill (skills-marketplace manifest)
+- [ ] Demo video
 
 > Working MVP: the full pipeline runs end-to-end and correctly rejects overfit /
 > recently-losing strategies (verified on BTC, ETH, BNB).
