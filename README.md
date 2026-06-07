@@ -66,8 +66,9 @@ src/
   cmc/         CoinMarketCap client — the intelligence layer (quotes, sentiment, technicals)
   engine/      Deterministic quant core: indicators, signal generators, backtester, templates
   panel/       Multi-agent review: scout, architects, risk, devil's advocate, voting, arbitrator
-  skill.py     Entry point: run_skill(token) -> spec + report + verdict
-examples/      Sample outputs
+  skill.py     CLI entry point: run_skill(token) -> spec + report + verdict
+  mcp_server.py  MCP server exposing the pipeline as a routable Skill
+examples/      Sample outputs + MCP client config
 tests/         Unit tests for the engine
 ```
 
@@ -133,6 +134,32 @@ The suite (`tests/test_engine.py`) covers indicator alignment, the signal value
 domain, the **no-look-ahead** entry contract, backtest determinism, and stat
 sanity — all on synthetic data, no network needed.
 
+## Use it as a Skill (MCP server)
+
+Beyond the CLI, the whole pipeline is exposed as an **MCP server**, so any
+MCP-compatible agent (Claude, Cursor, the CMC Agent Hub) can route a query to it
+and get a decision-ready result instead of raw data — which is exactly what a
+"Skill" is in the CMC marketplace sense.
+
+```bash
+python -m pip install -r requirements-mcp.txt
+python -m src.mcp_server          # stdio MCP server
+```
+
+Tools exposed:
+
+| Tool | What it does |
+|------|--------------|
+| `analyze_token(token, timeframe)` | Full pipeline → backtested, panel-reviewed strategy recommendation |
+| `token_intelligence(token)` | Fast CMC read: quote, momentum, fundamentals, global regime, Fear & Greed |
+
+Wire it into a client with [examples/mcp_config.json](examples/mcp_config.json).
+
+Data can come from CoinMarketCap two ways: the **Pro REST API** (used here, set
+`cmc_api_key` in `config.json`) or the official **CMC Data MCP**
+(`https://mcp.coinmarketcap.com/mcp`, `X-CMC-MCP-API-KEY` header) — same data,
+your choice of transport.
+
 ## Status
 
 - [x] Project scaffold (independent — no dependency on any other project)
@@ -144,7 +171,7 @@ sanity — all on synthetic data, no network needed.
 - [x] Sample outputs (examples/)
 - [x] Unit tests for the engine (17 tests, incl. no-look-ahead contract)
 - [x] `supertrend` generator fixed (proper trailing-band flips)
-- [ ] Package as a CMC Skill (skills-marketplace manifest)
+- [x] Exposed as an MCP server (routable Skill: `analyze_token`, `token_intelligence`)
 - [ ] Demo video
 
 > Working MVP: the full pipeline runs end-to-end and correctly rejects overfit /

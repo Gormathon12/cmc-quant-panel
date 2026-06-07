@@ -1,0 +1,3 @@
+-r requirements.txt
+# Only needed to run the Skill as an MCP server (python -m src.mcp_server).
+mcp>=1.0.0

@@ -122,6 +122,56 @@ def format_report(result: dict) -> str:
     return "\n".join(lines)
 
 
+def agent_summary(result: dict) -> dict:
+    """
+    Compact, agent-ready view of a full run — the kind of "decision-ready" output
+    the CMC Agent Hub favors over raw data. Used by the MCP server tool.
+    """
+    brief = result["market_brief"]
+    dec = result["decision"]
+    winner = dec.get("winner")
+
+    recommendation = None
+    if winner and winner["audit"]["verdict"] == "APPROVED":
+        s, bt, v = winner["strategy"], winner["backtest"], winner["vote"]
+        recommendation = {
+            "strategy": s["strategy_name"],
+            "bias": s["directional_bias"],
+            "timeframe": s["timeframe"],
+            "stop_loss_pct": s["stop_loss_pct"],
+            "take_profit_pct": s["take_profit_pct"],
+            "panel_verdict": v["consensus"],
+            "backtest": {
+                "avg_monthly_return": bt["avg_monthly_return"],
+                "sharpe": bt["sharpe"],
+                "max_drawdown": bt["max_drawdown"],
+                "win_rate": bt["win_rate"],
+                "total_trades": bt["total_trades"],
+                "walk_forward": bt.get("walk_forward", {}).get("verdict"),
+                "last_90d_return": bt.get("last_90d", {}).get("avg_monthly_return"),
+            },
+            "risk_flag": winner["devil"]["risk_flag"],
+        }
+
+    rejected = [
+        {"strategy": r["strategy_name"], "avg_monthly_return": r["avg_monthly_return"],
+         "sharpe": r["sharpe"]}
+        for r in dec["ranking"] if r["audit"] == "REJECTED"
+    ]
+
+    return {
+        "token": result["token"],
+        "regime": brief["regime"],
+        "sentiment": brief["sentiment"],
+        "narrative": brief["narrative"],
+        "candidates_evaluated": result["candidates_evaluated"],
+        "recommendation": recommendation,
+        "rejected_strategies": rejected,
+        "verdict": dec["verdict"],
+        "summary": dec["summary"],
+    }
+
+
 def main(argv=None):
     # Ensure UTF-8 output so em-dashes etc. render on Windows consoles (cp1252 default).
     try:

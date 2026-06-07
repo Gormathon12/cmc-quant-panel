@@ -1,0 +1,10 @@
+{
+  "_comment": "Add this to your MCP client (Claude Desktop, Cursor, etc.) to use the CMC Quant Panel as a routable Skill. Set cwd to where you cloned this repo and make sure config.json has your CMC API key.",
+  "mcpServers": {
+    "cmc-quant-panel": {
+      "command": "python",
+      "args": ["-m", "src.mcp_server"],
+      "cwd": "C:/Users/Santoro/Documents/bnb-hack-cmc-skill"
+    }
+  }
+}
